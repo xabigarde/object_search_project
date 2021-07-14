@@ -1,12 +1,12 @@
 <launch>
 
-    <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
-        <arg name="world_file" value="$(find rosbot_gazebo)/worlds/search.world"/>
+    <include file="$(find turtlebot_gazebo)/launch/turtlebot_search_world.launch">
+        <arg name="world_file" value="$(find turtlebot_gazebo)/worlds/search.world"/>
     </include>
 
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find object_search_project)/rviz/object_search_project.rviz"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find object_search_project)/rviz/object_search_project.rviz" output="screen"/>
 
-    <node name="find_object_3d" pkg="find_object_2d" type="find_object_2d" output="log" required="true">
+    <node name="find_object_3d" pkg="find_object_2d" type="find_object_2d" output="screen" required="true">
         <param name="gui" value="true" type="bool"/>
         <param name="subscribe_depth" value="true" type="bool"/>
         <param name="objects_path" value="$(find tutorial_pkg)/image_rec/" type="str"/>
